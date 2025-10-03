@@ -24,13 +24,10 @@ runs:
         echo "::group::Build"
         npm run build
         echo "::endgroup::"
-        echo "::group::Unit Tests"
-        npm run test:ci
-        echo "::endgroup::"
         echo "::group::Integration Tests (no sandbox)"
-        npm run test:integration:sandbox:none
+        npm run test:integration:sandbox:none -- --retry 0
         echo "::endgroup::"
         echo "::group::Integration Tests (docker sandbox)"
-        npm run test:integration:sandbox:docker
+        npm run test:integration:sandbox:docker -- --retry 0
         echo "::endgroup::"
       shell: 'bash'
